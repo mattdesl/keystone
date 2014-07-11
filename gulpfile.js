@@ -4,6 +4,8 @@ var gulp = require('gulp'),
 	// changed = require('gulp-changed'),
 	mocha = require('gulp-mocha'),
 	cover = require('gulp-coverage'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
 	colors = require('colors');
 
 /*
@@ -13,6 +15,46 @@ var paths = {
 	'src':['./index.js', './lib/**/*.js','./routes/**/*.js'],
 	'tests':['./test/**/*.js']
 };
+
+
+var libs = [
+    //- Common
+    "./public/js/lib/underscore/underscore-1.5.1.js",
+    "./public/js/lib/jquery/jquery-1.10.2.js",
+    "./public/js/lib/async/async.js",
+
+    //- Bootstrap Components
+    './public/js/lib/bootstrap/collapse.js',
+    './public/js/lib/bootstrap/dropdown.js',
+    './public/js/lib/bootstrap/tooltip.js',
+    './public/js/lib/bootstrap/button.js',
+
+    //- Other Components
+    "./public/js/lib/bootstrap-colorpicker/bootstrap-colorpicker.js",
+    "./public/js/lib/moment/moment-1.7.2.js",
+    "./public/js/lib/move/move-0.1.1.js",
+    "./public/js/lib/select2/select2-3.3.2.js",
+    "./public/js/lib/pikaday/pikaday-1.1.0.js",
+    "./public/js/lib/pikaday/pikaday.jquery-1.1.0.js",
+    "./public/js/lib/jquery-placeholder-shim/jquery-placeholder-shim.js",
+
+    // //- Keystone UI
+    "/keystone/js/common/plugins.js",
+    "/keystone/js/common/ui.js",
+    "/keystone/js/common/ui-alt-text.js",
+    "/keystone/js/common/ui-color.js",
+    "/keystone/js/common/ui-sortable.js",
+
+    //- List/Item Specific UI
+    './public/js/lib/browserified/querystring.js',
+    './public/js/lib/browserified/queryfilter.js',
+    "./public/js/common/ui-fixed-toolbar.js",
+    "./public/js/lib/joseph-myers/md5.js",
+    "./public/js/lib/fancybox/jquery.fancybox.pack.js",
+    "./public/js/lib/html5sortable/jquery.sortable.js"
+];
+
+
 
 // An error handler for the tests during gulp-watch
 // Otherwise the gulp-watch will terminate
@@ -52,6 +94,19 @@ gulp.task('spec', function(){
 		.on('error', handleError);
 
 });
+
+gulp.task('build', function() {
+  gulp.src(libs)
+    .pipe(concat('bundle.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/js/bundle'))
+});
+
+// gulp.task('build-css', function() {
+//   gulp.src('./static/css/*.css')
+//     .pipe(minifyCSS({keepBreaks:true}))
+//     .pipe(gulp.dest('./dist/'))
+// });
 
 /*
  * auto/watch gulp tasks that will trigger the tests on
