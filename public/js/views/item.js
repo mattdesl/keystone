@@ -1,4 +1,5 @@
 jQuery(function($) {
+	console.log($);
 
 	var $fields = $('.field'),
 		fieldsMap = {};
