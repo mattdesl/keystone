@@ -39,11 +39,11 @@ var libs = [
     "./public/js/lib/jquery-placeholder-shim/jquery-placeholder-shim.js",
 
     // //- Keystone UI
-    "/keystone/js/common/plugins.js",
-    "/keystone/js/common/ui.js",
-    "/keystone/js/common/ui-alt-text.js",
-    "/keystone/js/common/ui-color.js",
-    "/keystone/js/common/ui-sortable.js",
+    "./public/js/common/plugins.js",
+    "./public/js/common/ui.js",
+    "./public/js/common/ui-alt-text.js",
+    "./public/js/common/ui-color.js",
+    "./public/js/common/ui-sortable.js",
 
     //- List/Item Specific UI
     './public/js/lib/browserified/querystring.js',
