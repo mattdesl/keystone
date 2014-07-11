@@ -1,5 +1,4 @@
 jQuery(function($) {
-	
 	// ALT-TEXT CLASS
 	// ==============
 	

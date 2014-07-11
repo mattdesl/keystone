@@ -30,7 +30,7 @@ var libs = [
     './public/js/lib/bootstrap/button.js',
 
     //- Other Components
-    "./public/js/lib/bootstrap-colorpicker/bootstrap-colorpicker.js",
+    "./public/js/lib/bootstrap-colorpicker/bootstrap-colorpicker.min.js",
     "./public/js/lib/moment/moment-1.7.2.js",
     "./public/js/lib/move/move-0.1.1.js",
     "./public/js/lib/select2/select2-3.3.2.js",
@@ -98,7 +98,7 @@ gulp.task('spec', function(){
 gulp.task('build', function() {
   gulp.src(libs)
     .pipe(concat('bundle.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('public/js/bundle'))
 });
 
